@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBooks & Gifts - Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="products">
+    <header>
+        <nav>
+            <a href="index.html" class="logo">EcoBooks & Gifts</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Our Products</h1>
+        <section class="product-grid">
+            <!-- Example Product Items -->
+            <div class="product-item">
+                <img src="path/to/image1.jpg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$19.99</p>
+                <button class="btn-primary" onclick="addToCart(1, 'Product 1', 19.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image2.jpg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$29.99</p>
+                <button class="btn-primary" onclick="addToCart(2, 'Product 2', 29.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image3.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$39.99</p>
+                <button class="btn-primary" onclick="addToCart(3, 'Product 3', 39.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image4.jpg" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>$49.99</p>
+                <button class="btn-primary" onclick="addToCart(4, 'Product 4', 49.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image5.jpg" alt="Product 5">
+                <h3>Product 5</h3>
+                <p>$59.99</p>
+                <button class="btn-primary" onclick="addToCart(5, 'Product 5', 59.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image6.jpg" alt="Product 6">
+                <h3>Product 6</h3>
+                <p>$69.99</p>
+                <button class="btn-primary" onclick="addToCart(6, 'Product 6', 69.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image7.jpg" alt="Product 7">
+                <h3>Product 7</h3>
+                <p>$79.99</p>
+                <button class="btn-primary" onclick="addToCart(7, 'Product 7', 79.99)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="path/to/image8.jpg" alt="Product 8">
+                <h3>Product 8</h3>
+                <p>$89.99</p>
+                <button class="btn-primary" onclick="addToCart(8, 'Product 8', 89.99)">Add to Cart</button>
+            </div>
+            <!-- Add more products as needed -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 EcoBooks & Gifts. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update the cart count on page load
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>
