@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Light Gray */
 }
 
 header {
@@ -74,15 +74,15 @@ nav ul {
     font-weight: bold;
 }
 
-.featured-products, .cart-items, .product-detail, .contact-form {
+.about-us, .featured-products, .testimonials, .special-offers, .newsletter-signup, .social-media {
     padding: 2rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
 }
 
-    .featured-products h2, .cart-items h1, .contact-form h1 {
-        text-align: center;
-        margin-bottom: 2rem;
+    .about-us h2, .featured-products h2, .testimonials h2, .special-offers h2, .newsletter-signup h2, .social-media h2 {
+        margin-bottom: 1.5rem;
     }
 
 .product-grid {
@@ -123,27 +123,45 @@ nav ul {
     font-weight: bold;
 }
 
-.cart-summary, .product-info {
-    text-align: center;
+.testimonial {
+    margin-bottom: 1.5rem;
 }
 
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-    .contact-form label {
-        display: block;
+    .testimonial blockquote {
+        font-style: italic;
         margin-bottom: 0.5rem;
     }
 
-    .contact-form input, .contact-form textarea {
-        width: 100%;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 0.3rem;
-    }
+.newsletter-signup input[type="email"] {
+    width: calc(100% - 120px);
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+}
+
+.newsletter-signup button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #003366; /* Dark Blue */
+    color: #fff;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.social-media a {
+    display: block;
+    margin: 0.5rem 0;
+    color: #003366; /* Dark Blue */
+    text-decoration: none;
+}
+
+/* Divider Styles */
+hr.divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
+}
 
 footer {
     background: #003366; /* Dark Blue */

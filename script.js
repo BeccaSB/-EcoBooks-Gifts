@@ -1,70 +1,56 @@
-// Retrieve cart from localStorage or initialize empty cart
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Function to add item to the cart
-function addToCart(id, name, price) {
-    // Check if the item is already in the cart
-    let item = cart.find(item => item.id === id);
-    if (item) {
-        item.quantity++;
-    } else {
-        cart.push({ id, name, price, quantity: 1 });
-    }
-    updateCart();
-}
-
-// Function to update cart in localStorage and on the page
-function updateCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartDisplay();
-    updateCartCount();
-}
-
-// Function to update cart count in the header
-function updateCartCount() {
-    const cartCount = document.getElementById('cart-count');
-    if (cartCount) {
-        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-        cartCount.textContent = totalItems;
-    }
-}
-
-// Function to update cart items display
-function updateCartDisplay() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    if (cartItemsContainer) {
-        cartItemsContainer.innerHTML = '';
-
-        let total = 0;
-
-        cart.forEach(item => {
-            total += item.price * item.quantity;
-
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `
-                <img src="path/to/image${item.id}.jpg" alt="${item.name}">
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p>$${item.price.toFixed(2)} x ${item.quantity}</p>
-                    <button class="btn-secondary" onclick="removeFromCart(${item.id})">Remove</button>
-                </div>
-            `;
-            cartItemsContainer.appendChild(cartItem);
-        });
-
-        document.getElementById('cart-total').textContent = total.toFixed(2);
-    }
-}
-
-// Function to remove item from the cart
-function removeFromCart(id) {
-    cart = cart.filter(item => item.id !== id);
-    updateCart();
-}
-
-// Initialize cart display and count on page load
 document.addEventListener('DOMContentLoaded', () => {
-    updateCartDisplay();
     updateCartCount();
+    loadCartItems();
 });
+
+function addToCart(productId, productName, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let product = cart.find(item => item.id === productId);
+    if (product) {
+        product.quantity += 1;
+    } else {
+        cart.push({ id: productId, name: productName, price: price, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+    document.getElementById('cart-count').textContent = totalCount;
+}
+
+function loadCartItems() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartItemsContainer = document.getElementById('cart-items');
+    let total = 0;
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    cartItemsContainer.innerHTML = cart.map(item => {
+        total += item.price * item.quantity;
+        return `
+            <div class="cart-item">
+                <h4>${item.name}</h4>
+                <p>Price: $${item.price.toFixed(2)}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
+                <button onclick="removeFromCart(${item.id})">Remove</button>
+            </div>
+        `;
+    }).join('');
+
+    document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+
+function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCartItems();
+    updateCartCount();
+}
