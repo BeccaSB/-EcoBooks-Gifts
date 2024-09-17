@@ -133,7 +133,7 @@ nav ul {
     }
 
 .newsletter-signup input[type="email"] {
-    width: calc(100% - 120px);
+    width: calc(50% - 120px);
     padding: 0.5rem;
     border: 1px solid #ddd;
     border-radius: 0.3rem;
